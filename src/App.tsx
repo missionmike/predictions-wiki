@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet-async';
 import Home from './pages/Home';
 import Layout from './components/Layout';
 import Post from './pages/Post';
-import React from 'react';
 
 // This would typically come from an API or CMS
 const categories = [

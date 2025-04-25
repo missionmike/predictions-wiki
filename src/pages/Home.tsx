@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 interface Category {
   name: string;
@@ -21,38 +20,9 @@ interface HomeProps {
   latestPost: Post;
 }
 
-// This would typically come from an API or static files
-const recentPosts: Post[] = [
-  {
-    slug: 'future-of-ai',
-    title: 'The Future of Artificial Intelligence',
-    excerpt: 'Exploring the potential impact of AI on our society and daily lives.',
-    category: 'technology',
-    date: '2024-03-15',
-  },
-  {
-    slug: 'climate-change-2024',
-    title: 'Climate Change Predictions for 2024',
-    excerpt: 'Analyzing current trends and making predictions about climate change.',
-    category: 'science',
-    date: '2024-03-10',
-  },
-  {
-    slug: 'market-trends',
-    title: 'Market Trends and Economic Forecasts',
-    excerpt: 'Understanding current market trends and making economic predictions.',
-    category: 'business',
-    date: '2024-03-05',
-  },
-];
-
 const Home: React.FC<HomeProps> = ({ categories, latestPost }) => {
-  useEffect(() => {
-    console.log('Home component mounted');
-  }, []);
-
   return (
-    <div className="p-4">
+    <>
       <Helmet>
         <title>Predictions Blog - Home</title>
         <meta
@@ -108,7 +78,7 @@ const Home: React.FC<HomeProps> = ({ categories, latestPost }) => {
           </div>
         </section>
       </div>
-    </div>
+    </>
   );
 };
 
