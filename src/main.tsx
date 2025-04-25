@@ -7,23 +7,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 // Google Tag Manager
-const gtmId = 'GTM-XXXXXXX'; // Replace with your GTM ID
-const gtmScript = document.createElement('script');
-gtmScript.innerHTML = `
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','${gtmId}');
-`;
-document.head.appendChild(gtmScript);
+const gtmId = import.meta.env.VITE_GTM_ID;
+if (gtmId) {
+  const gtmScript = document.createElement('script');
+  gtmScript.innerHTML = `
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','${gtmId}');
+  `;
+  document.head.appendChild(gtmScript);
 
-const gtmNoscript = document.createElement('noscript');
-gtmNoscript.innerHTML = `
-  <iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe>
-`;
-document.body.appendChild(gtmNoscript);
+  const gtmNoscript = document.createElement('noscript');
+  gtmNoscript.innerHTML = `
+    <iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  `;
+  document.body.appendChild(gtmNoscript);
+}
 
 // Simple test to see if React is working
 const TestComponent = () => {
