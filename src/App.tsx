@@ -39,7 +39,7 @@ function App() {
       </Helmet>
 
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/predictions" element={<Layout />}>
           <Route index element={<Home categories={categories} latestPost={latestPost} />} />
           <Route path="category/:category" element={<Category />} />
           <Route path="post/:slug" element={<Post />} />

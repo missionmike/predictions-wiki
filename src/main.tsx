@@ -27,21 +27,10 @@ if (gtmId) {
   document.body.appendChild(gtmNoscript);
 }
 
-// Simple test to see if React is working
-const TestComponent = () => {
-  return (
-    <div className="bg-red-100 p-4">
-      <h1 className="text-2xl font-bold">Test Component</h1>
-      <p>If you can see this, React is working!</p>
-    </div>
-  );
-};
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <TestComponent />
         <App />
       </BrowserRouter>
     </HelmetProvider>

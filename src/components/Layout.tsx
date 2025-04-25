@@ -8,20 +8,20 @@ const Layout: React.FC = () => {
       <header className="border-b">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
-            <Link to="/" className="text-xl font-bold">
+            <Link to="/predictions" className="text-xl font-bold">
               Predictions
             </Link>
             <div className="space-x-4">
-              <Link to="/" className="hover:text-primary">
+              <Link to="/predictions" className="hover:text-primary">
                 Home
               </Link>
-              <Link to="/category/technology" className="hover:text-primary">
+              <Link to="/predictions/category/technology" className="hover:text-primary">
                 Technology
               </Link>
-              <Link to="/category/science" className="hover:text-primary">
+              <Link to="/predictions/category/science" className="hover:text-primary">
                 Science
               </Link>
-              <Link to="/category/business" className="hover:text-primary">
+              <Link to="/predictions/category/business" className="hover:text-primary">
                 Business
               </Link>
             </div>
