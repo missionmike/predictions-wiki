@@ -7,4 +7,12 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://missionmike.github.io",
   integrations: [mdx(), sitemap()],
+  vite: {
+    envPrefix: ["PUBLIC_"],
+    logLevel: "info",
+  },
+  output: "static",
+  build: {
+    format: "directory",
+  },
 });
