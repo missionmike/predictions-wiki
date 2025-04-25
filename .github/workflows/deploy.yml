@@ -24,7 +24,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      PUBLIC_GTM_ID: ${{ secrets.PUBLIC_GTM_ID }}
+      PUBLIC_GTM_ID: ${{ vars.PUBLIC_GTM_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
