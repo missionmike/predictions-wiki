@@ -18,7 +18,19 @@ if (diffDays < 0) {
 } else if (diffDays === 1) {
   timeUntilText = 'Tomorrow';
 } else {
-  timeUntilText = `${diffDays} days`;
+  const diffYears = Math.ceil(diffDays / 365);
+  const diffMonths = Math.ceil(diffDays / 30);
+  const diffWeeks = Math.ceil(diffDays / 7);
+
+  if (diffYears >= 1) {
+    timeUntilText = `${diffYears} ${diffYears === 1 ? 'year' : 'years'}`;
+  } else if (diffMonths >= 1) {
+    timeUntilText = `${diffMonths} ${diffMonths === 1 ? 'month' : 'months'}`;
+  } else if (diffWeeks >= 1) {
+    timeUntilText = `${diffWeeks} ${diffWeeks === 1 ? 'week' : 'weeks'}`;
+  } else {
+    timeUntilText = `${diffDays} days`;
+  }
 }
 ---
 
