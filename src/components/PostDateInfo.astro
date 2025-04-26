@@ -1,0 +1,58 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import TimeUntilExpiry from './TimeUntilExpiry.astro';
+
+interface Props {
+  pubDate: Date;
+  expiryDate?: Date;
+  updatedDate?: Date;
+  showTimeUntil?: boolean;
+}
+
+const { pubDate, expiryDate, updatedDate, showTimeUntil = false } = Astro.props;
+---
+
+<div class="date">
+  {
+    showTimeUntil ? (
+      <>
+        Predicted on <FormattedDate date={pubDate} />
+        {expiryDate && (
+          <span class="time-until-it-should-happen">
+            Time until it happens: <TimeUntilExpiry pubDate={pubDate} expiryDate={expiryDate} />
+          </span>
+        )}
+      </>
+    ) : (
+      <>
+        <FormattedDate date={pubDate} />
+        {updatedDate && (
+          <div class="last-updated-on">
+            Last updated on <FormattedDate date={updatedDate} />
+          </div>
+        )}
+      </>
+    )
+  }
+</div>
+
+<style lang="scss">
+  .date {
+    margin: 1rem 0;
+    color: rgb(var(--gray));
+  }
+
+  .time-until-it-should-happen {
+    color: rgb(var(--gray));
+
+    &::before {
+      content: '';
+      border-left: 1px solid rgb(var(--gray));
+      margin-right: 0.5rem;
+    }
+  }
+
+  .last-updated-on {
+    font-style: italic;
+  }
+</style>

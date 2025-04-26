@@ -1,6 +1,5 @@
 ---
-import FormattedDate from './FormattedDate.astro';
-import TimeUntilExpiry from './TimeUntilExpiry.astro';
+import PostDateInfo from './PostDateInfo.astro';
 
 interface Props {
   post: {
@@ -22,15 +21,11 @@ const { post, isFeatured = false } = Astro.props;
   <a href={`/predictions/${post.id}/`}>
     {post.data.heroImage && <img width={720} height={360} src={post.data.heroImage} alt="" />}
     <h4 class="title">{post.data.title}</h4>
-    <p class="date">
-      Predicted on <FormattedDate date={post.data.pubDate} />
-      <span class="time-until-it-should-happen">
-        Time until it happens: <TimeUntilExpiry
-          pubDate={post.data.pubDate}
-          expiryDate={post.data.expiryDate}
-        />
-      </span>
-    </p>
+    <PostDateInfo
+      pubDate={post.data.pubDate}
+      expiryDate={post.data.expiryDate}
+      showTimeUntil={true}
+    />
   </a>
 </li>
 

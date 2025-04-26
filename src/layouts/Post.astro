@@ -1,11 +1,11 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import PostDateInfo from '../components/PostDateInfo.astro';
 
 type Props = CollectionEntry<'posts'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, youTubeUrl } = Astro.props;
+const { title, description, pubDate, updatedDate, expiryDate, heroImage, youTubeUrl } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -94,16 +94,7 @@ const { title, description, pubDate, updatedDate, heroImage, youTubeUrl } = Astr
     </div>
     <div class="prose">
       <div class="title">
-        <div class="date">
-          <FormattedDate date={pubDate} />
-          {
-            updatedDate && (
-              <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-              </div>
-            )
-          }
-        </div>
+        <PostDateInfo pubDate={pubDate} updatedDate={updatedDate} expiryDate={expiryDate} />
         <h1>{title}</h1>
         <hr />
       </div>
