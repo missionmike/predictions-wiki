@@ -2,11 +2,11 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import BlogPreviewCard from '../../components/BlogPreviewCard.astro';
+import PostPreviewCard from '../../components/PostPreviewCard.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getSortedBlogPosts } from '../../utils/blog';
+import { getSortedPosts } from '../../utils/post';
 
-const posts = await getSortedBlogPosts();
+const posts = await getSortedPosts();
 ---
 
 <!doctype html>
@@ -37,7 +37,7 @@ const posts = await getSortedBlogPosts();
     <main>
       <section>
         <ul>
-          {posts.map((post, index) => <BlogPreviewCard post={post} isFeatured={index === 0} />)}
+          {posts.map((post, index) => <PostPreviewCard post={post} isFeatured={index === 0} />)}
         </ul>
       </section>
     </main>

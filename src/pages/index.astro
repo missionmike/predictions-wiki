@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogPreviewCard from '../components/BlogPreviewCard.astro';
+import PostPreviewCard from '../components/PostPreviewCard.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getLatestBlogPost } from '../utils/blog';
+import { getLastestPost } from '../utils/post';
 
-const latestPost = await getLatestBlogPost();
+const latestPost = await getLastestPost();
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -19,7 +19,7 @@ const latestPost = await getLatestBlogPost();
         <div class="latest-post">
           <h2>Latest Prediction</h2>
           <ul>
-            <BlogPreviewCard post={latestPost} isFeatured={true} />
+            <PostPreviewCard post={latestPost} isFeatured={true} />
           </ul>
         </div>
       )

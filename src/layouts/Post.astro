@@ -5,7 +5,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, youTubeUrl } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -23,6 +23,24 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     .hero-image img {
       display: block;
       margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: var(--box-shadow);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      margin-bottom: 1em;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
       border-radius: 12px;
       box-shadow: var(--box-shadow);
     }
@@ -57,7 +75,20 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
   </style>
   <article>
     <div class="hero-image">
-      {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+      {
+        youTubeUrl ? (
+          <div class="video-container">
+            <iframe
+              src={youTubeUrl.replace('watch?v=', 'embed/').replace('&t=', '?start=')}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            />
+          </div>
+        ) : (
+          heroImage && <img width={1020} height={510} src={heroImage} alt="" />
+        )
+      }
     </div>
     <div class="prose">
       <div class="title">
