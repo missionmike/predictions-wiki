@@ -1,5 +1,5 @@
 ---
-title: 'All Diseases could be Cured in 10 Years'
+title: 'All Diseases Could be Curable in 10 Years'
 description: "Google Deepmind's CEO mentions that he believes that AI could potentially cure all diseases in 10 years."
 pubDate: '4/21/25'
 expiryDate: '4/21/35'

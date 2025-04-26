@@ -18,8 +18,11 @@ const { pubDate, expiryDate, updatedDate, showTimeUntil = false } = Astro.props;
       <>
         Predicted on <FormattedDate date={pubDate} />
         {expiryDate && (
-          <span class="time-until-it-should-happen">
-            Time until it happens: <TimeUntilExpiry pubDate={pubDate} expiryDate={expiryDate} />
+          <span class="time-left">
+            Time left:{' '}
+            <strong>
+              <TimeUntilExpiry pubDate={pubDate} expiryDate={expiryDate} />
+            </strong>
           </span>
         )}
       </>
@@ -42,13 +45,21 @@ const { pubDate, expiryDate, updatedDate, showTimeUntil = false } = Astro.props;
     color: rgb(var(--gray));
   }
 
-  .time-until-it-should-happen {
+  .time-left {
     color: rgb(var(--gray));
 
     &::before {
       content: '';
       border-left: 1px solid rgb(var(--gray));
       margin-right: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      display: block;
+
+      &::before {
+        display: none;
+      }
     }
   }
 

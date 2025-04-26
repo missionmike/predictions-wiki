@@ -1,39 +1,78 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import PostPreviewCard from '../components/PostPreviewCard.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getLastestPost } from '../utils/post';
+import { getSortedPosts } from '../utils/post';
 
-const latestPost = await getLastestPost();
+const posts = await getSortedPosts();
+const latestPost = posts[0];
+const otherPosts = posts.slice(1);
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <main>
-    <h1>⏳ Predictions Wiki</h1>
-    <p>
-      Welcome to Predictions Wiki! Behold a collection of predictions from the past. How many of
-      them came true? <strong>We're keeping track.</strong>
-    </p>
-    {
-      latestPost && (
-        <div class="latest-post">
-          <h2>Latest Prediction</h2>
-          <ul>
-            <PostPreviewCard post={latestPost} isFeatured={true} />
-          </ul>
-        </div>
-      )
-    }
-  </main>
-</BaseLayout>
-
-<style>
-  .latest-post {
-    margin-top: 2rem;
-  }
-  .latest-post ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-</style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        width: 960px;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      .welcome {
+        margin-bottom: 2rem;
+      }
+      section {
+        margin-bottom: 3rem;
+      }
+      @media (max-width: 720px) {
+        ul {
+          gap: 0.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="welcome">
+        <h1>⏳ Predictions Wiki</h1>
+        <p>
+          Welcome to Predictions Wiki! Behold a collection of predictions from the past. How many of
+          them came true? <strong>We're keeping track.</strong>
+        </p>
+      </section>
+      {
+        latestPost && (
+          <section>
+            <h2>Latest Prediction</h2>
+            <ul>
+              <PostPreviewCard post={latestPost} isFeatured={true} />
+            </ul>
+          </section>
+        )
+      }
+      {
+        otherPosts.length > 0 && (
+          <section>
+            <h2>More Predictions</h2>
+            <ul>
+              {otherPosts.map((post) => (
+                <PostPreviewCard post={post} isFeatured={false} />
+              ))}
+            </ul>
+          </section>
+        )
+      }
+    </main>
+    <Footer />
+  </body>
+</html>
