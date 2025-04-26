@@ -1,0 +1,27 @@
+---
+interface Props {
+  pubDate: Date;
+  expiryDate: Date;
+}
+
+const { pubDate, expiryDate } = Astro.props;
+
+const now = new Date();
+const diffTime = expiryDate.getTime() - now.getTime();
+const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+let timeUntilText = '';
+if (diffDays < 0) {
+  timeUntilText = 'Expired';
+} else if (diffDays === 0) {
+  timeUntilText = 'Today';
+} else if (diffDays === 1) {
+  timeUntilText = 'Tomorrow';
+} else {
+  timeUntilText = `${diffDays} days`;
+}
+---
+
+<time datetime={pubDate.toISOString()}>
+  {timeUntilText}
+</time>

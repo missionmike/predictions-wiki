@@ -1,5 +1,6 @@
 ---
 import FormattedDate from './FormattedDate.astro';
+import TimeUntilExpiry from './TimeUntilExpiry.astro';
 
 interface Props {
   post: {
@@ -8,6 +9,7 @@ interface Props {
       title: string;
       heroImage?: string;
       pubDate: Date;
+      expiryDate: Date;
     };
   };
   isFeatured?: boolean;
@@ -21,61 +23,81 @@ const { post, isFeatured = false } = Astro.props;
     {post.data.heroImage && <img width={720} height={360} src={post.data.heroImage} alt="" />}
     <h4 class="title">{post.data.title}</h4>
     <p class="date">
-      <FormattedDate date={post.data.pubDate} />
+      Predicted on <FormattedDate date={post.data.pubDate} />
+      <span class="time-until-it-should-happen">
+        Time until it happens: <TimeUntilExpiry
+          pubDate={post.data.pubDate}
+          expiryDate={post.data.expiryDate}
+        />
+      </span>
     </p>
   </a>
 </li>
 
-<style>
+<style lang="scss">
   .blog-preview-card {
     width: calc(50% - 1rem);
+
+    &.featured {
+      width: 100%;
+      margin-bottom: 1rem;
+      text-align: center;
+
+      img {
+        width: 100%;
+      }
+
+      .title {
+        font-size: 2.369rem;
+      }
+    }
+
+    img {
+      margin-bottom: 0.5rem;
+      border-radius: 12px;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        h4,
+        .date {
+          color: rgb(var(--accent));
+        }
+
+        img {
+          box-shadow: var(--box-shadow);
+        }
+      }
+    }
+
+    .title {
+      margin: 0;
+      color: rgb(var(--black));
+      line-height: 1;
+    }
+
+    .date {
+      margin: 0;
+      color: rgb(var(--gray));
+    }
   }
-  .blog-preview-card.featured {
-    width: 100%;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  .blog-preview-card.featured img {
-    width: 100%;
-  }
-  .blog-preview-card.featured .title {
-    font-size: 2.369rem;
-  }
-  .blog-preview-card img {
-    margin-bottom: 0.5rem;
-    border-radius: 12px;
-  }
-  .blog-preview-card a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-  .blog-preview-card .title {
-    margin: 0;
-    color: rgb(var(--black));
-    line-height: 1;
-  }
-  .blog-preview-card .date {
-    margin: 0;
-    color: rgb(var(--gray));
-  }
-  .blog-preview-card a:hover h4,
-  .blog-preview-card a:hover .date {
-    color: rgb(var(--accent));
-  }
-  .blog-preview-card a:hover img {
-    box-shadow: var(--box-shadow);
-  }
+
   @media (max-width: 720px) {
     .blog-preview-card {
       width: 100%;
       text-align: center;
-    }
-    .blog-preview-card.featured {
-      margin-bottom: 0;
-    }
-    .blog-preview-card.featured .title {
-      font-size: 1.563em;
+
+      &.featured {
+        margin-bottom: 0;
+
+        .title {
+          font-size: 1.563em;
+        }
+      }
     }
   }
 </style>

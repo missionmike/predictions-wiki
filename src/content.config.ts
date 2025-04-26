@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 
 import { glob } from 'astro/loaders';
 
-const blog = defineCollection({
+const posts = defineCollection({
   loader: glob({ base: './src/content/predictions', pattern: '**/*.{md,mdx}' }),
   // Type-check frontmatter using a schema
   schema: z.object({
@@ -10,6 +10,7 @@ const blog = defineCollection({
     description: z.string(),
     // Transform string to Date object
     pubDate: z.coerce.date(),
+    expiryDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     heroImage: z.string().optional(),
     category: z.string(),
@@ -18,4 +19,4 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+export const collections = { posts };
