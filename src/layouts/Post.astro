@@ -79,7 +79,9 @@ const { title, description, pubDate, updatedDate, heroImage, youTubeUrl } = Astr
         youTubeUrl ? (
           <div class="video-container">
             <iframe
-              src={youTubeUrl.replace('watch?v=', 'embed/').replace('&t=', '?start=')}
+              src={youTubeUrl
+                .replace('https://youtu.be/', 'https://www.youtube.com/embed/')
+                .replace('?t=', '?start=')}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
