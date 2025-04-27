@@ -4,12 +4,12 @@ export function calculateTimeUntilText(expiryDate: Date): string {
   const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
   // If the expiry date is in the past, return 'Expired'
-  if (daysDiff < 0) return `${formatDaysDiff(Math.abs(daysDiff))} ago`;
+  if (daysDiff < 0) return `${formatDays(Math.abs(daysDiff))} ago`;
 
-  return formatDaysDiff(daysDiff);
+  return formatDays(daysDiff);
 }
 
-function formatDaysDiff(daysDiff: number): string {
+export function formatDays(daysDiff: number): string {
   // If this is more than a year, show years.
   // If this is exactly a year, show '1 year'.
   if (daysDiff / 365 > 1 || daysDiff / 365 === 1) {

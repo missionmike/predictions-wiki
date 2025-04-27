@@ -9,6 +9,7 @@ interface Props {
       heroImage?: string;
       pubDate: Date;
       expiryDate: Date;
+      predictedDays?: number;
     };
   };
   isFeatured?: boolean;
@@ -24,7 +25,8 @@ const { post, isFeatured = false } = Astro.props;
     <PostDateInfo
       pubDate={post.data.pubDate}
       expiryDate={post.data.expiryDate}
-      showTimeUntil={true}
+      predictedDays={post.data.predictedDays}
+      featured={isFeatured}
     />
   </a>
 </li>

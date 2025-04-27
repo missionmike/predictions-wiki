@@ -4,6 +4,7 @@ description:
   'Elon Musk in an interview with CNN, claimed that by the following year, Tesla cars would be able
   to drive 90% of their miles on auto-pilot.'
 pubDate: '10/2/14'
+predictedDays: 365
 expiryDate: '10/2/15'
 heroImage: '/images/predictions/elon-musk-full-self-driving-next-year.png'
 category: 'Automobiles'

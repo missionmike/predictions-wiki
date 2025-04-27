@@ -11,7 +11,7 @@ const timeUntilText = calculateTimeUntilText(expiryDate);
 ---
 
 <strong style={timeUntilText.includes('ago') ? 'color: red;' : ''}>
-  {timeUntilText.includes('ago') ? 'Expired ' : 'Time left: '}
+  {timeUntilText.includes('ago') ? 'Expired: ' : 'Time left: '}
   <time
     datetime={pubDate.toISOString()}
     class={timeUntilText.includes('ago') ? 'text-red-500' : ''}

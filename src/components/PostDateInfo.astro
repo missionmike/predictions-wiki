@@ -1,37 +1,41 @@
 ---
 import FormattedDate from './FormattedDate.astro';
 import TimeUntilExpiry from './TimeUntilExpiry.astro';
+import { formatDays } from '../utils/timeUntil';
 
 interface Props {
   pubDate: Date;
-  expiryDate?: Date;
   updatedDate?: Date;
-  showTimeUntil?: boolean;
+  expiryDate?: Date;
+  predictedDays?: number;
+  featured?: boolean; // for featured posts on homepage.
 }
 
-const { pubDate, expiryDate, updatedDate, showTimeUntil = false } = Astro.props;
+const { pubDate, updatedDate, expiryDate, predictedDays, featured = false } = Astro.props;
 ---
 
-<div class="date">
+<div class:list={['date', { featured }]}>
+  <span> Predicted on <FormattedDate date={pubDate} /></span>
   {
-    showTimeUntil ? (
-      <>
-        Predicted on <FormattedDate date={pubDate} />
-        {expiryDate && (
-          <span class="expiry-container">
-            <TimeUntilExpiry pubDate={pubDate} expiryDate={expiryDate} />
-          </span>
-        )}
-      </>
-    ) : (
-      <>
-        <FormattedDate date={pubDate} />
-        {updatedDate && (
-          <div class="last-updated-on">
-            Last updated on <FormattedDate date={updatedDate} />
-          </div>
-        )}
-      </>
+    predictedDays && (
+      <span class="predicted-days-container">
+        Estimate:
+        <strong>{formatDays(predictedDays)}</strong>
+      </span>
+    )
+  }
+  {
+    expiryDate && (
+      <span class="expiry-container">
+        <TimeUntilExpiry pubDate={pubDate} expiryDate={expiryDate} />
+      </span>
+    )
+  }
+  {
+    updatedDate && (
+      <span class="last-updated-on">
+        Last updated on <FormattedDate date={updatedDate} />
+      </span>
     )
   }
 </div>
@@ -39,25 +43,67 @@ const { pubDate, expiryDate, updatedDate, showTimeUntil = false } = Astro.props;
 <style lang="scss">
   .date {
     margin: 1rem 0;
+    line-height: 1.5;
     color: rgb(var(--gray));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    span {
+      &:nth-child(2) {
+        border-left: 1px solid rgb(var(--gray));
+        border-right: 1px solid rgb(var(--gray));
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 1200px) {
+      &:not(.featured) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+
+        span {
+          border-left: none;
+          border-right: none;
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      margin-bottom: 2rem;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      span {
+        border-left: none !important;
+        border-right: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+  }
+
+  .predicted-days-container {
+    color: rgb(var(--gray));
+    font-style: italic;
   }
 
   .expiry-container {
     color: rgb(var(--gray));
-
-    &::before {
-      content: '';
-      border-left: 1px solid rgb(var(--gray));
-      margin-right: 0.5rem;
-    }
-
-    @media (max-width: 768px) {
-      display: block;
-
-      &::before {
-        display: none;
-      }
-    }
   }
 
   .last-updated-on {

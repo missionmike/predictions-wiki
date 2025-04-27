@@ -5,7 +5,16 @@ import PostDateInfo from '../components/PostDateInfo.astro';
 
 type Props = CollectionEntry<'posts'>['data'];
 
-const { title, description, pubDate, updatedDate, expiryDate, heroImage, youTubeUrl } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  predictedDays,
+  updatedDate,
+  expiryDate,
+  heroImage,
+  youTubeUrl,
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -46,11 +55,14 @@ const { title, description, pubDate, updatedDate, expiryDate, heroImage, youTube
     }
 
     .prose {
-      width: 720px;
-      max-width: calc(100% - 2em);
+      width: 100%;
       margin: auto;
-      padding: 1em;
       color: rgb(var(--gray-dark));
+      padding: 0;
+
+      @media (min-width: 768px) {
+        max-width: calc(100% - 2em);
+      }
     }
 
     .title {
@@ -62,15 +74,6 @@ const { title, description, pubDate, updatedDate, expiryDate, heroImage, youTube
 
     .title h1 {
       margin: 0 0 0.5em 0;
-    }
-
-    .date {
-      margin-bottom: 0.5em;
-      color: rgb(var(--gray));
-    }
-
-    .last-updated-on {
-      font-style: italic;
     }
   </style>
   <article>
@@ -94,7 +97,13 @@ const { title, description, pubDate, updatedDate, expiryDate, heroImage, youTube
     </div>
     <div class="prose">
       <div class="title">
-        <PostDateInfo pubDate={pubDate} updatedDate={updatedDate} expiryDate={expiryDate} />
+        <PostDateInfo
+          pubDate={pubDate}
+          predictedDays={predictedDays}
+          updatedDate={updatedDate}
+          expiryDate={expiryDate}
+          featured={true}
+        />
         <h1>{title}</h1>
         <hr />
       </div>

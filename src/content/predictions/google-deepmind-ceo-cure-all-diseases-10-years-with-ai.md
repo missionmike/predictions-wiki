@@ -4,6 +4,7 @@ description:
   "Google Deepmind's CEO mentions that he believes that AI could potentially cure all diseases in 10
   years."
 pubDate: '4/21/25'
+predictedDays: 3650
 expiryDate: '4/21/35'
 heroImage: '/images/predictions/google-deepmind-ceo-demis-hassabis-60-minutes.jpg'
 category: 'Healthcare'
