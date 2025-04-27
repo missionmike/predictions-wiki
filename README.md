@@ -1,5 +1,27 @@
 # ⏳ Predictions Wiki
 
+## Overview
+
+This website is live at https://predictions.wiki/
+
+### What's the Purpose?
+
+Well, the goal is to track predictions made by high-level people of planet earth, and then hold them
+accountable to the public.
+
+For a long time, people have made large, sweeping predictions over huge economic and world issues,
+then they don't come to fruition - and shortly after, everyone seems to forget about it.
+
+This website aims to help change that, but tracking the prediction history and outcomes for various
+statements.
+
+### Setup
+
+To set up this repository, clone via `git` and then run the following to install dependencies:
+`npm install`.
+
+Then, spin up the dev server via `npm run dev` and visit [http://localhost:4321](localhost:4321)
+
 ## Development
 
 ### Built with Astro
