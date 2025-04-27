@@ -38,7 +38,5 @@ export function calculateTimeUntilText(expiryDate: Date): string {
 
   // If this is more than a day, show days.
   // If this is exactly a day, show '1 day'.
-  if (daysDiff > 0) {
-    return `${daysDiff} days`;
-  }
+  return daysDiff > 0 ? `${daysDiff} days` : '1 day';
 }
