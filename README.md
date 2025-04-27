@@ -6,7 +6,7 @@ This website is live at https://predictions.wiki/
 
 ### What's the Purpose?
 
-Well, the goal is to track predictions made by high-level people of planet earth, and then hold them
+Well, the goal is to track predictions made by people of planet earth, and then hold them
 accountable to the public.
 
 For a long time, people have made large, sweeping predictions over huge economic and world issues.
