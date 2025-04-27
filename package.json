@@ -9,7 +9,8 @@
     "astro": "astro",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,astro,css}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,astro,css}\"",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
+    "test": "vitest"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.5",
@@ -26,6 +27,7 @@
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.87.0",
-    "typescript-eslint": "^8.31.0"
+    "typescript-eslint": "^8.31.0",
+    "vitest": "^3.1.2"
   }
 }

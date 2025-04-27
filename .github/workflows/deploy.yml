@@ -47,6 +47,9 @@ jobs:
       - name: Check linting
         run: npm run lint
 
+      - name: Run tests
+        run: npm run test
+
       - name: Build with Astro
         run: npm run build
 
