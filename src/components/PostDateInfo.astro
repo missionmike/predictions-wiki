@@ -59,28 +59,26 @@ const { pubDate, updatedDate, expiryDate, predictedDays, featured = false } = As
       }
     }
 
-    @media (max-width: 768px) {
+    &:not(.featured) {
+      flex-direction: column;
       align-items: flex-start;
-      justify-content: flex-start;
+      gap: 0.25rem;
+
+      span {
+        border-left: none;
+        border-right: none;
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
 
     @media (max-width: 1024px) {
       font-size: 1.1rem;
     }
 
-    @media (max-width: 1200px) {
-      &:not(.featured) {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-
-        span {
-          border-left: none;
-          border-right: none;
-          padding-left: 0;
-          padding-right: 0;
-        }
-      }
+    @media (max-width: 768px) {
+      align-items: flex-start;
+      justify-content: flex-start;
     }
 
     @media (max-width: 600px) {
