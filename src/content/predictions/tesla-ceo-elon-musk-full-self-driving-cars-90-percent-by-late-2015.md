@@ -10,9 +10,11 @@ category: 'Automobiles'
 tags: ['automobiles', 'tesla', 'ceo', 'elon musk']
 ---
 
-View the [post on X](https://x.com/CNNBusiness/status/517738916892270592)
+In 2014, Elon Musk made bold claims about the future of self-driving cars. View the
+[post on X](https://x.com/CNNBusiness/status/517738916892270592)
 
-Sources:
+### Sources:
 
 [Wikipedia - Tesla Autopilot](https://en.wikipedia.org/wiki/Tesla_Autopilot)
+
 [Wikipedia - List of Predictions for Autonomous Tesla Vehicles by Elon Musk](https://en.wikipedia.org/wiki/List_of_predictions_for_autonomous_Tesla_vehicles_by_Elon_Musk)

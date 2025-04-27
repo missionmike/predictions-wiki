@@ -10,6 +10,12 @@ const { pubDate, expiryDate } = Astro.props;
 const timeUntilText = calculateTimeUntilText(expiryDate);
 ---
 
-<time datetime={pubDate.toISOString()}>
-  {timeUntilText}
-</time>
+<strong style={timeUntilText.includes('ago') ? 'color: red;' : ''}>
+  {timeUntilText.includes('ago') ? 'Expired ' : 'Time left: '}
+  <time
+    datetime={pubDate.toISOString()}
+    class={timeUntilText.includes('ago') ? 'text-red-500' : ''}
+  >
+    {timeUntilText}
+  </time>
+</strong>

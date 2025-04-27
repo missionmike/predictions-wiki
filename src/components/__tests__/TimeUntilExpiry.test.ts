@@ -9,7 +9,7 @@ describe('TimeUntilExpiry', () => {
   it('shows "Expired" for past dates', () => {
     const pastDate = new Date(Date.now() - day);
     const result = calculateTimeUntilText(pastDate);
-    expect(result).toBe('Expired');
+    expect(result).toBe('1 day ago');
   });
 
   it('shows days for dates within a week', () => {

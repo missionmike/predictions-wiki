@@ -18,11 +18,8 @@ const { pubDate, expiryDate, updatedDate, showTimeUntil = false } = Astro.props;
       <>
         Predicted on <FormattedDate date={pubDate} />
         {expiryDate && (
-          <span class="time-left">
-            Time left:{' '}
-            <strong>
-              <TimeUntilExpiry pubDate={pubDate} expiryDate={expiryDate} />
-            </strong>
+          <span class="expiry-container">
+            <TimeUntilExpiry pubDate={pubDate} expiryDate={expiryDate} />
           </span>
         )}
       </>
@@ -45,7 +42,7 @@ const { pubDate, expiryDate, updatedDate, showTimeUntil = false } = Astro.props;
     color: rgb(var(--gray));
   }
 
-  .time-left {
+  .expiry-container {
     color: rgb(var(--gray));
 
     &::before {
