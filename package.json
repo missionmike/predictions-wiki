@@ -7,8 +7,8 @@
     "build": "npm run format:check && npm run lint && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,astro,css,md}\"",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,astro,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,mjs,jsx,ts,tsx,astro,css,md}\"",
+    "format": "prettier --write \"src/**/*.{js,mjs,jsx,ts,tsx,astro,css,md}\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
     "test": "vitest",
     "test:coverage": "vitest --coverage"
