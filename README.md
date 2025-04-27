@@ -21,7 +21,7 @@ statements.
 To set up this repository, clone via `git` and then run the following to install dependencies:
 `npm install`.
 
-Then, spin up the dev server via `npm run dev` and visit [http://localhost:4321](localhost:4321)
+Then, spin up the dev server via `npm run dev` and visit [localhost:4321](http://localhost:4321)
 
 ## Development
 
