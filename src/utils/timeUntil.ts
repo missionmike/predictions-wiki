@@ -1,5 +1,4 @@
 export function calculateTimeUntilText(dateExpired: Date): string {
-  console.log(dateExpired);
   const timeDiff = dateExpired.getTime() - Date.now();
   const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 

@@ -29,6 +29,7 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
       'no-useless-escape': 'off',
+      'no-console': 'error',
     },
   },
   {
@@ -36,6 +37,7 @@ export default [
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
+      'no-console': 'error',
     },
   },
 ];
