@@ -25,6 +25,8 @@ const {
   dateUpdated,
   ogType = 'website',
 } = Astro.props;
+
+let dateUpdatedDefault = dateUpdated || datePublished;
 ---
 
 <!-- Global Metadata -->
@@ -76,10 +78,10 @@ const {
           <meta property="og:article:published_time" content={datePublished.toISOString()} />
         </>
       )}
-      {dateUpdated && (
+      {dateUpdatedDefault && (
         <>
-          <meta property="og:updated_time" content={dateUpdated.toISOString()} />
-          <meta property="og:article:modified_time" content={dateUpdated.toISOString()} />
+          <meta property="og:updated_time" content={dateUpdatedDefault.toISOString()} />
+          <meta property="og:article:modified_time" content={dateUpdatedDefault.toISOString()} />
         </>
       )}
     </>
