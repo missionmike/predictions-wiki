@@ -13,7 +13,15 @@ interface Props {
   ogType?: string;
 }
 
-const { title, description, author, image, datePublished, dateUpdated, ogType } = Astro.props;
+const {
+  title,
+  description,
+  author,
+  image,
+  datePublished,
+  dateUpdated,
+  ogType = 'website',
+} = Astro.props;
 
 // Load GTM ID from environment variable
 const gtmId = import.meta.env.PUBLIC_GTM_ID;
