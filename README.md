@@ -47,3 +47,9 @@ All commands are run from the root of the project, from a terminal:
 | `npm run lint`            | Runs ESLint to check code for issues                     |
 | `npm run test`            | Runs the Jest test suite                                 |
 | `npm run test:coverage`   | Runs the Jest test suite with coverage report            |
+
+## Licensing
+
+- **Code** (site and templates): MIT License — see [LICENSE](./LICENSE)
+- **Content** (blog posts, articles): © 2025 Michael R. Dinerstein — see
+  [CONTENT_LICENSE.md](./CONTENT_LICENSE.md)
