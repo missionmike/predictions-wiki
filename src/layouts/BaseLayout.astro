@@ -6,9 +6,14 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description: string;
+  author?: string;
+  image?: string;
+  datePublished?: Date;
+  dateUpdated?: Date;
+  ogType?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, author, image, datePublished, dateUpdated, ogType } = Astro.props;
 
 // Load GTM ID from environment variable
 const gtmId = import.meta.env.PUBLIC_GTM_ID;
@@ -24,7 +29,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead
+      title={title}
+      description={description}
+      author={author}
+      image={image}
+      datePublished={datePublished}
+      dateUpdated={dateUpdated}
+      ogType={ogType}
+    />
     {gtmId && <script set:html={gtmScript} />}
     <slot name="head" />
   </head>

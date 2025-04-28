@@ -8,11 +8,12 @@ const posts = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    author: z.string().optional(),
+    daysPredicted: z.number().optional(),
     // Transform string to Date object
-    pubDate: z.coerce.date(),
-    predictedDays: z.number().optional(),
-    expiryDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
+    datePublished: z.coerce.date(),
+    dateExpired: z.coerce.date(),
+    dateUpdated: z.coerce.date().optional(),
     heroImage: z.string().optional(),
     category: z.string(),
     tags: z.array(z.string()).optional(),

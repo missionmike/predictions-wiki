@@ -4,37 +4,37 @@ import TimeUntilExpiry from './TimeUntilExpiry.astro';
 import { formatDays } from '../utils/timeUntil';
 
 interface Props {
-  pubDate: Date;
-  updatedDate?: Date;
-  expiryDate?: Date;
-  predictedDays?: number;
+  datePublished: Date;
+  dateUpdated?: Date;
+  dateExpired?: Date;
+  daysPredicted?: number;
   featured?: boolean; // for featured posts on homepage.
 }
 
-const { pubDate, updatedDate, expiryDate, predictedDays, featured = false } = Astro.props;
+const { datePublished, dateUpdated, dateExpired, daysPredicted, featured = false } = Astro.props;
 ---
 
 <div class:list={['date', { featured }]}>
-  <span> Predicted on <FormattedDate date={pubDate} /></span>
+  <span> Predicted on <FormattedDate date={datePublished} /></span>
   {
-    predictedDays && (
+    daysPredicted && (
       <span class="predicted-days-container">
         Estimate:
-        <strong>{formatDays(predictedDays)}</strong>
+        <strong>{formatDays(daysPredicted)}</strong>
       </span>
     )
   }
   {
-    expiryDate && (
+    dateExpired && (
       <span class="expiry-container">
-        <TimeUntilExpiry pubDate={pubDate} expiryDate={expiryDate} />
+        <TimeUntilExpiry datePublished={datePublished} dateExpired={dateExpired} />
       </span>
     )
   }
   {
-    updatedDate && (
+    dateUpdated && (
       <span class="last-updated-on">
-        Last updated on <FormattedDate date={updatedDate} />
+        Last updated on <FormattedDate date={dateUpdated} />
       </span>
     )
   }

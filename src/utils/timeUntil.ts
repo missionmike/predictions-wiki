@@ -1,6 +1,6 @@
-export function calculateTimeUntilText(expiryDate: Date): string {
-  console.log(expiryDate);
-  const timeDiff = expiryDate.getTime() - Date.now();
+export function calculateTimeUntilText(dateExpired: Date): string {
+  console.log(dateExpired);
+  const timeDiff = dateExpired.getTime() - Date.now();
   const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
   // If the expiry date is in the past, return 'Expired'

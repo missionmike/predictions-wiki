@@ -8,16 +8,25 @@ type Props = CollectionEntry<'posts'>['data'];
 const {
   title,
   description,
-  pubDate,
-  predictedDays,
-  updatedDate,
-  expiryDate,
+  author,
+  datePublished,
+  daysPredicted,
+  dateUpdated,
+  dateExpired,
   heroImage,
   youTubeUrl,
 } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  author={author}
+  image={heroImage}
+  datePublished={datePublished}
+  dateUpdated={dateUpdated}
+  ogType="article"
+>
   <style>
     main {
       width: calc(100% - 2em);
@@ -98,10 +107,10 @@ const {
     <div class="prose">
       <div class="title">
         <PostDateInfo
-          pubDate={pubDate}
-          predictedDays={predictedDays}
-          updatedDate={updatedDate}
-          expiryDate={expiryDate}
+          datePublished={datePublished}
+          daysPredicted={daysPredicted}
+          dateUpdated={dateUpdated}
+          dateExpired={dateExpired}
           featured={true}
         />
         <h1>{title}</h1>

@@ -9,6 +9,9 @@ interface Props {
   description: string;
   image?: string;
   author?: string;
+  datePublished?: Date;
+  dateUpdated?: Date;
+  ogType?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -18,13 +21,22 @@ const {
   description,
   image = '/images/predictions-wiki-og-image-default.jpg',
   author = 'Michael R. Dinerstein',
+  datePublished,
+  dateUpdated,
+  ogType = 'website',
 } = Astro.props;
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="icon" type="image/ico" href="/images/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+<link rel="manifest" href="/images/site.webmanifest" />
+
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
   rel="alternate"
@@ -55,6 +67,25 @@ const {
 <meta property="og:image" content={new URL(image, Astro.url)} />
 <meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:author" content={author} />
+{
+  ogType === 'article' && (
+    <>
+      {datePublished && (
+        <>
+          <meta property="og:published_time" content={datePublished.toISOString()} />
+          <meta property="og:article:published_time" content={datePublished.toISOString()} />
+        </>
+      )}
+      {dateUpdated && (
+        <>
+          <meta property="og:updated_time" content={dateUpdated.toISOString()} />
+          <meta property="og:article:modified_time" content={dateUpdated.toISOString()} />
+        </>
+      )}
+    </>
+  )
+}
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />

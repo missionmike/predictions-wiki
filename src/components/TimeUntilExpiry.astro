@@ -2,18 +2,18 @@
 import { calculateTimeUntilText } from '../utils/timeUntil';
 
 interface Props {
-  pubDate: Date;
-  expiryDate: Date;
+  datePublished: Date;
+  dateExpired: Date;
 }
 
-const { pubDate, expiryDate } = Astro.props;
-const timeUntilText = calculateTimeUntilText(expiryDate);
+const { datePublished, dateExpired } = Astro.props;
+const timeUntilText = calculateTimeUntilText(dateExpired);
 ---
 
 <strong style={timeUntilText.includes('ago') ? 'color: red;' : ''}>
   {timeUntilText.includes('ago') ? 'Expired: ' : 'Time left: '}
   <time
-    datetime={pubDate.toISOString()}
+    datetime={datePublished.toISOString()}
     class={timeUntilText.includes('ago') ? 'text-red-500' : ''}
   >
     {timeUntilText}
