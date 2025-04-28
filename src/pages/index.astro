@@ -1,7 +1,5 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import PostPreviewCard from '../components/PostPreviewCard.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getSortedPosts } from '../utils/post';
@@ -11,69 +9,59 @@ const latestPost = posts[0];
 const otherPosts = posts.slice(1);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      main {
-        width: 960px;
-      }
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <style>
+    main {
+      width: 960px;
+    }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .welcome {
+      padding-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 720px) {
       ul {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
+        gap: 0.5em;
       }
-      .welcome {
-        padding-top: 2rem;
-        margin-bottom: 2rem;
-      }
-      section {
-        margin-bottom: 3rem;
-      }
-      @media (max-width: 720px) {
-        ul {
-          gap: 0.5em;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <section class="welcome">
-        <h1>⏳ Predictions Wiki</h1>
-        <p>
-          Welcome to Predictions Wiki! Behold a collection of predictions made by various people
-          over time. How many of them came true? <strong>We're keeping track.</strong>
-        </p>
+    }
+  </style>
+  <section class="welcome">
+    <h1>⏳ Predictions Wiki</h1>
+    <p>
+      Welcome to Predictions Wiki! Behold a collection of notable predictions made by people over
+      time. How many of them came true? <strong>We're keeping track.</strong>
+    </p>
+  </section>
+  {
+    latestPost && (
+      <section>
+        <h2>Latest Prediction</h2>
+        <ul>
+          <PostPreviewCard post={latestPost} isFeatured={true} />
+        </ul>
       </section>
-      {
-        latestPost && (
-          <section>
-            <h2>Latest Prediction</h2>
-            <ul>
-              <PostPreviewCard post={latestPost} isFeatured={true} />
-            </ul>
-          </section>
-        )
-      }
-      {
-        otherPosts.length > 0 && (
-          <section>
-            <h2>More Predictions</h2>
-            <ul>
-              {otherPosts.map((post) => (
-                <PostPreviewCard post={post} isFeatured={false} />
-              ))}
-            </ul>
-          </section>
-        )
-      }
-    </main>
-    <Footer />
-  </body>
-</html>
+    )
+  }
+  {
+    otherPosts.length > 0 && (
+      <section>
+        <h2>More Predictions</h2>
+        <ul>
+          {otherPosts.map((post) => (
+            <PostPreviewCard post={post} isFeatured={false} />
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</BaseLayout>
