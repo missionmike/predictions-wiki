@@ -1,7 +1,9 @@
 ---
 title: "Perplexity CEO Claims New AI Browser 'Comet' Can Replace Recruiters in Months"
 description:
-  "Perplexity CEO Aravind Srinivas makes a bold claim: the new 'Comet' AI browser will replace recruiters and assistants within months. Learn how he says AI can automate a week's worth of work in a single prompt."
+  "Perplexity CEO Aravind Srinivas makes a bold claim: the new 'Comet' AI browser will replace
+  recruiters and assistants within months. Learn how he says AI can automate a week's worth of work
+  in a single prompt."
 datePublished: '7/17/25'
 daysPredicted: 180
 dateExpired: '1/16/26'
@@ -27,8 +29,9 @@ predicting these changes within the next six months. The new browser is currentl
 phase and is pitched as a tool to automate the core functions of these roles. This has added to the
 ongoing debate about whether AI will augment the existing workforce or replace human jobs.
 
---- 
+---
 
 Sources:<br />
-[www.theverge.com](https://www.theverge.com/decoder-podcast-with-nilay-patel/708256/perplexity-ceo-decoder-aravind-srinivas-comet-browser-ai-search) | 
+[www.theverge.com](https://www.theverge.com/decoder-podcast-with-nilay-patel/708256/perplexity-ceo-decoder-aravind-srinivas-comet-browser-ai-search)
+|
 [gizmodo.com](https://gizmodo.com/ai-will-replace-recruiters-and-assistants-in-six-months-says-ceo-behind-chatgpt-rival-2000631871)
