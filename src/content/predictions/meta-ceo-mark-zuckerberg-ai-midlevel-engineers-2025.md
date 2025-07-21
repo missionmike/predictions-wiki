@@ -1,5 +1,5 @@
 ---
-title: 'Zuckerberg: AI Will Code Like Midlevel Engineers by 2025'
+title: 'Zuckerberg: AI Will Code Like Midlevel Engineers within 2025'
 description:
   'Mark Zuckerberg predicts AI will match midlevel software engineers within 2025, reshaping coding,
   productivity, and the future of software development.'
