@@ -23,9 +23,9 @@ export function formatDays(daysDiff: number): string {
     return `${years} years, ${months} months`;
   }
 
-  // If this is more than a month, show months.
-  // If this is exactly a month, show '1 month'.
-  if (daysDiff / 30 > 1) {
+  // If this is 3 months or more, show months.
+  // Otherwise, show days (for durations less than 3 months).
+  if (daysDiff >= 90) {
     const months = Math.floor(daysDiff / 30);
     const days = daysDiff % 30;
     if (days === 0) {
